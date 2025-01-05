@@ -1,17 +1,17 @@
 # Simple Todo App
 
-Give a brief description of the project here. Feel free to give it a different name.
+The simple Todo App is an activity so I can learn how to organize javascript into multiple files.
 
 ## Functionality
 
-Give a more detailed explanation of the project and its functionality.
+The main premise of the website is a todo list adding and deleting tasks. As well as checking for completed tasks.
 
 ## Technology
 
-Give a description of the technologies and techniques used. Pictures, GIFs, or screenshots that detail the project features are recommended.
+created classes to condense code. imported and exported to connect different files together.
 
 ## Deployment
 
 This project is deployed on GitHub Pages:
 
-- ADD LINK HERE
+(https://github.com/AlfredoP977/se_project_todo-app)
