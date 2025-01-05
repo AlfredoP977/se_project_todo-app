@@ -5,9 +5,18 @@ class FormValidator {
     this._errorClass = settings.errorClass;
     this._inputErrorClass = settings.inputErrorClass;
     this._inactiveButtonClass = settings.inactiveButtonClass;
+    this._inputList = Array.from(
+      this._formEl.querySelectorAll(this._inputSelector)
+    );
+    this._buttonElement = this._formEl.querySelector(
+      this._submitButtonSelector
+    );
     this._formEl = formEl;
   }
-
+  resetValidation() {
+    this._formEl.reset();
+    this._toggleButtonState(this._inputList, this._buttonElement);
+  }
   _setEventListeners() {
     const inputList = Array.from(
       this._formEl.querySelectorAll(this._inputSelector)
@@ -62,6 +71,7 @@ class FormValidator {
   enableValidation() {
     this._formEl.addEventListener("submit", (evt) => {
       evt.preventDefault();
+      this.resetValidation();
     });
     this._setEventListeners();
   }
