@@ -10,7 +10,9 @@ class Todo {
     });
     this._todoCheckboxEl.addEventListener("change", () => {
       this._data.completed = !this._data.completed;
+      this._completed = todos.filter((todos) => !todos.checked).length;
       console.log(this._data.completed);
+      console.log(this._data.completed.checked);
     });
   }
   _generateCheckboxEl() {
