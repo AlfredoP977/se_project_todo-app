@@ -16,6 +16,24 @@ const addTodoForm = document.forms["add-todo-form"]; // keep eye on this
 
 const todoCounter = new TodoCounter(initialTodos, ".counter__text");
 
+function handleCheck(completed) {
+  todoCounter.updateCompleted(completed);
+}
+
+function handleDelete(completed) {
+  if (completed) {
+    todoCounter.updateCompleted(false);
+  }
+}
+
+// function handleAddedtodo(total) {
+//   todoCounter.updateTotal(total);
+// }
+
+// function handleIncrimentTodo(total) {
+//   todoCounter.updateTotal(total);
+// }
+
 const addTodoPopup = new PopupWithForm({
   popupSelector: "#add-todo-popup",
   handleFormSubmit: (inputValues) => {
@@ -32,7 +50,13 @@ const addTodoPopup = new PopupWithForm({
 addTodoPopup.setEventListeners();
 
 const generateTodo = (data) => {
-  const todo = new Todo(data, "#todo-template");
+  const todo = new Todo(
+    data,
+    "#todo-template",
+    handleCheck,
+    handleDelete,
+    handleIncrimentTodo
+  );
   const todoElement = todo.getView();
   return todoElement;
 };
