@@ -26,13 +26,13 @@ function handleDelete(completed) {
   }
 }
 
-// function handleAddedtodo(total) {
-//   todoCounter.updateTotal(total);
-// }
+function handleSubtodo() {
+  todoCounter.updateTotal(false);
+}
 
-// function handleIncrimentTodo(total) {
-//   todoCounter.updateTotal(total);
-// }
+function handleAddedTodo() {
+  todoCounter.updateTotal(true);
+}
 
 const addTodoPopup = new PopupWithForm({
   popupSelector: "#add-todo-popup",
@@ -43,6 +43,7 @@ const addTodoPopup = new PopupWithForm({
     const todo = generateTodo(inputValues);
     section.addItem(todo);
     addTodoPopup.close();
+    handleAddedTodo();
     addTodoForm.reset();
   },
 });
@@ -55,7 +56,7 @@ const generateTodo = (data) => {
     "#todo-template",
     handleCheck,
     handleDelete,
-    handleIncrimentTodo
+    handleSubtodo
   );
   const todoElement = todo.getView();
   return todoElement;
