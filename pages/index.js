@@ -34,13 +34,18 @@ function handleAddedTodo() {
   todoCounter.updateTotal(true);
 }
 
+function addTodoToSection(section, item) {
+  const todo = generateTodo(item);
+  section.addItem(todo);
+}
+
 const addTodoPopup = new PopupWithForm({
   popupSelector: "#add-todo-popup",
   handleFormSubmit: (inputValues) => {
     const id = uuidv4();
     inputValues.id = id;
     console.log(inputValues);
-    section.addItem(generateTodo(inputValues));
+    addTodoToSection(section, inputValues);
     addTodoPopup.close();
     handleAddedTodo();
     addTodoForm.reset();
@@ -63,12 +68,10 @@ const generateTodo = (data) => {
 
 const section = new Section({
   items: initialTodos,
-  renderer: (item) => {
-    const todo = generateTodo(item);
-    section.addItem(todo);
-  },
+  renderer: (item) => addTodoToSection(section, item),
   containerSelector: ".todos__list",
 });
+
 section.renderItems();
 
 addTodoButton.addEventListener("click", () => {
