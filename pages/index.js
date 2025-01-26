@@ -40,8 +40,7 @@ const addTodoPopup = new PopupWithForm({
     const id = uuidv4();
     inputValues.id = id;
     console.log(inputValues);
-    const todo = generateTodo(inputValues);
-    section.addItem(todo);
+    section.addItem(generateTodo(inputValues));
     addTodoPopup.close();
     handleAddedTodo();
     addTodoForm.reset();
@@ -72,13 +71,8 @@ const section = new Section({
 });
 section.renderItems();
 
-function handleEscapeClose() {
-  if (EventTarget.key === "Escape");
-}
-
 addTodoButton.addEventListener("click", () => {
   addTodoPopup.open();
-  document.addEventListener("keyup", handleEscapeClose);
 });
 
 const newTodoValidator = new FormValidator(validationConfig, addTodoForm);
